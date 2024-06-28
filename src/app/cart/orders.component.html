@@ -1,0 +1,19 @@
+@if(this.orderService.orderItems().length) {
+    <app-search-bar
+        [form]="orderFormControl"
+    ></app-search-bar>
+}
+
+<ul role="list">
+    @for(orderItem of orderItems; track orderItem.id) {
+        <app-single-item [displayItem]="orderItem">
+            <ng-template #customTemplate let-orderItem>
+                <span>{{ orderItem.product.name }}</span>
+                <span>{{ orderItem.product.description }}</span>
+                <span>Amount: {{ orderItem.amount }}</span>
+            </ng-template>
+        </app-single-item>
+    } @empty {
+        <h1>Empty</h1>
+    }
+</ul>

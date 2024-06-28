@@ -1,0 +1,20 @@
+<header>
+    <mat-toolbar>
+      <h1>Whoosh!</h1>
+      @if (authService.user()) {
+        <h2 class="welcome-message">
+          Welcome {{ authService.user()?.role }} {{ authService.user()?.displayName }}
+        </h2>
+      }
+      <span class="example-spacer"></span>
+        <a mat-fab routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">
+          Web shop
+        </a>
+        <a [hidden]="!authService.user()" mat-fab extended routerLink="/orders" routerLinkActive="active" ariaCurrentWhenActive="page">
+          My Orders
+          <span mat-icon-button class="cart-items-button" aria-label="Example icon-button with heart icon">
+            {{ orderService.orderItems().length  }}
+          </span>
+        </a>
+    </mat-toolbar>
+</header>

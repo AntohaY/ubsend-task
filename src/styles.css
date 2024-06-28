@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background: radial-gradient(circle at top left, #181023, #0b0519);
+    color: #e612db;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background: wheat;
+}
+  
+section {
+    height: 100%;
+    padding: 2rem;
+    background: var(--color-primary);
+}
+  
+button {
+    height: 30px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

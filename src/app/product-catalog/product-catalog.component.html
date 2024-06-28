@@ -1,0 +1,31 @@
+
+<div>
+    <h3>Products catalog</h3>
+
+    <mat-grid-list cols="3" gutterSize="5" rowHeight="1:1">
+        @for(product of products; track product.id) {
+            <mat-grid-tile>
+                <app-product 
+                    [product]="product"
+                    [userLoggedIn]="user !== null"
+                    (addProductToCart)="orderItemBeingAdded.set(product)">
+                </app-product>
+            </mat-grid-tile>
+        }
+    </mat-grid-list>
+
+
+    <app-modal [isOpen]="!!orderItemBeingAdded()">
+        <ng-template>
+            <app-form-modal
+                title="Order Item"
+                [formGroup]="orderItemForm"
+                (save)="
+                orderItemBeingAdded() ?
+                    orderProduct(orderItemBeingAdded()!, orderItemForm.getRawValue().amount, orderItemForm.getRawValue().deliverAtDate!) 
+                    : null"
+                (close)="orderItemBeingAdded.set(null)"
+            ></app-form-modal>
+        </ng-template>
+    </app-modal>
+</div>

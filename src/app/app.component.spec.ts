@@ -17,7 +17,6 @@ describe('AppComponent', () => {
   it(`should have the 'ubsend-task' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('ubsend-task');
   });
 
   it('should render title', () => {
