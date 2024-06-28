@@ -1,7 +1,7 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { Product } from '../interfaces/product';
+import { Product } from '../../shared/interfaces/product';
 import { catchError, EMPTY } from 'rxjs';
-import { StorageService } from './storage.service';
+import { StorageService } from '../../shared/data-access/storage.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 
