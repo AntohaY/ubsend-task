@@ -1,5 +1,5 @@
 import { Injectable, InjectionToken, PLATFORM_ID, inject } from '@angular/core';
-import { of } from 'rxjs';
+import { delay, of } from 'rxjs';
 import { Product } from '../interfaces/product';
 import { Order } from '../interfaces/order';
 
@@ -24,13 +24,15 @@ export class StorageService {
   loadProducts() {
     this.uploadProductsToStorage();
     const products = this.storage.getItem('products');
-    return of(products ? (JSON.parse(products) as Product[]) : []);
+    return of(products ? (JSON.parse(products) as Product[]) : []).pipe(
+      delay(2000)
+    );
   }
 
-  loadOrders() {
-    const orders = this.storage.getItem('orders');
-    return of(orders ? (JSON.parse(orders) as Order[]) : []);
-  }
+  // loadOrders() {
+  //   const orders = this.storage.getItem('orders');
+  //   return of(orders ? (JSON.parse(orders) as Order[]) : []);
+  // }
 
   uploadProductsToStorage() {
     this.storage.setItem('products', JSON.stringify([

@@ -1,7 +1,11 @@
 <section>
-    <app-product-catalog
+    @defer (when productsService.products()){
+        <app-product-catalog
         [products]="productsService.products()"
         [user]="authService.user()"
-    >
-    </app-product-catalog>
+        >
+        </app-product-catalog>
+    } @loading (after 50ms; minimum 1s) {
+        <mat-spinner></mat-spinner>
+    }
 </section>
